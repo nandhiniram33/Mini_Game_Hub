@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Game Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-icon">🎮</div>
+          <div>
+            <p class="eyebrow">Play • Earn • Rise</p>
+            <h1>Mini Game Hub</h1>
+          </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-btn active" data-section="hub" type="button">🏠 Home</button>
+          <button class="nav-btn" data-section="daily" type="button">🎯 Daily</button>
+          <button class="nav-btn" data-section="achievements" type="button">🏅 Achievements</button>
+          <button class="nav-btn" data-section="stats" type="button">📊 Stats</button>
+          <button class="nav-btn" data-section="leaderboard" type="button">🏆 Leaderboard</button>
+          <button class="nav-btn" data-section="shop" type="button">🛍️ Shop</button>
+          <button class="nav-btn" data-section="profile" type="button">👤 Profile</button>
+        </nav>
+
+        <div class="header-actions">
+          <label class="name-input" for="usernameInput">
+            <span>Username</span>
+            <input id="usernameInput" type="text" maxlength="20" value="Nandhu" />
+          </label>
+
+          <div class="header-badges">
+            <span class="badge-pill">⭐ Lv <strong id="headerLevel">1</strong></span>
+            <span class="badge-pill">🏆 <strong id="headerScore">0</strong></span>
+            <span class="badge-pill">🪙 <strong id="headerCoins">0</strong></span>
+          </div>
+
+          <div class="header-buttons">
+            <button id="toggleTheme" class="secondary-btn" type="button">🌙 Dark</button>
+            <button id="toggleSound" class="secondary-btn" type="button">🔊 Sound On</button>
+            <button id="resetProgressBtn" class="danger-btn" type="button">🔄 Reset Progress</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-layout">
+        <section id="hub" class="page-section active">
+          <div class="hero-card panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Ready to Play?</p>
+              <h2>Ready to play?</h2>
+              <p class="hero-subtitle">Pick a game, chase a high score, and become the legend of this arcade.</p>
+            </div>
+
+            <div class="hero-mini-stats">
+              <div class="hero-stat">
+                <span>Level</span>
+                <strong id="heroLevel">1</strong>
+              </div>
+              <div class="hero-stat">
+                <span>XP</span>
+                <strong id="heroXP">0</strong>
+              </div>
+              <div class="hero-stat">
+                <span>Streak</span>
+                <strong id="heroStreak">0</strong>
+              </div>
+              <div class="hero-stat">
+                <span>Coins</span>
+                <strong id="heroCoins">0</strong>
+              </div>
+            </div>
+
+            <button id="surpriseBtn" class="primary-btn" type="button">🎲 Surprise Me</button>
+          </div>
+
+          <div class="top-strip">
+            <div class="panel challenge-panel challenge-highlight">
+              <div class="section-heading">
+                <h3>🎯 Daily Challenge</h3>
+                <span class="section-tag">Rewards</span>
+              </div>
+              <div id="dailyChallengeList" class="challenge-list"></div>
+              <button id="claimRewardBtn" class="secondary-btn reward-btn" type="button">🎁 Claim Daily Reward</button>
+            </div>
+
+            <div class="profile-summary panel compact-profile">
+              <div class="profile-header">
+                <div id="profileAvatar" class="avatar-badge">🧑‍🚀</div>
+                <div>
+                  <p class="eyebrow">Player Profile</p>
+                  <h3 id="profileName">Nandhu</h3>
+                </div>
+              </div>
+
+              <div class="mini-metrics">
+                <div>
+                  <span>⭐ Level</span>
+                  <strong id="summaryLevel">1</strong>
+                </div>
+                <div>
+                  <span>🏆 Score</span>
+                  <strong id="summaryPoints">0</strong>
+                </div>
+                <div>
+                  <span>🪙 Coins</span>
+                  <strong id="summaryCoins">0</strong>
+                </div>
+                <div>
+                  <span>🔥 Streak</span>
+                  <strong id="summaryStreak">0</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="xp-panel panel xp-band">
+            <div class="level-header">
+              <span>⭐ Level <strong id="levelBadge">1</strong></span>
+              <span id="xpText">0 / 100 XP</span>
+            </div>
+            <div class="xp-bar">
+              <div id="xpFill" class="xp-fill"></div>
+            </div>
+            <p id="levelHint">Ready for your first challenge.</p>
+          </div>
+
+          <div class="hub-grid">
+            <div class="games-panel panel">
+              <div class="section-heading">
+                <h3>🎮 Game Arcade</h3>
+                <span class="section-tag">3 titles</span>
+              </div>
+
+              <div class="game-grid">
+                <article class="game-card rps-card" data-game="rps" tabindex="0">
+                  <div class="card-badge">+30 XP +20 Coins</div>
+                  <div class="card-icon rock">✊</div>
+                  <h3>Rock Paper Scissors</h3>
+                  <p>Classic arcade duel with cunning strategy.</p>
+                  <button type="button" class="card-action">Play Now</button>
+                </article>
+
+                <article class="game-card guess-card" data-game="guess" tabindex="0">
+                  <div class="card-badge">+40 XP +25 Coins</div>
+                  <div class="card-icon guess">🎯</div>
+                  <h3>Number Guessing</h3>
+                  <p>Use logic, speed, and precision to win.</p>
+                  <button type="button" class="card-action">Play Now</button>
+                </article>
+
+                <article class="game-card ttt-card" data-game="ttt" tabindex="0">
+                  <div class="card-badge">+35 XP +30 Coins</div>
+                  <div class="card-icon ttt">❌</div>
+                  <h3>Tic-Tac-Toe</h3>
+                  <p>Beat the computer and line up three wins.</p>
+                  <button type="button" class="card-action">Play Now</button>
+                </article>
+              </div>
+            </div>
+
+            <div class="side-stack">
+              <div class="panel continue-panel">
+                <div class="section-heading">
+                  <h3>▶️ Continue Playing</h3>
+                </div>
+                <div id="continuePlayingList" class="continue-list"></div>
+              </div>
+
+              <div class="panel achievement-panel">
+                <div class="section-heading">
+                  <h3>🏅 Achievements</h3>
+                </div>
+                <div id="achievementPreview" class="achievement-preview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-grid">
+            <div class="panel leaderboard-panel">
+              <div class="section-heading">
+                <h3>🏆 Leaderboard</h3>
+                <span class="section-tag">Top 3</span>
+              </div>
+
+              <div id="leaderboardPodium" class="leaderboard-podium"></div>
+
+              <div class="leaderboard-table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Player</th>
+                      <th>Score</th>
+                      <th>Level</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leaderboardBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="panel stats-panel">
+              <div class="section-heading">
+                <h3>📊 Game Statistics</h3>
+              </div>
+              <div class="stats-list">
+                <div class="stat-row"><span>Games Played</span><strong id="statGamesPlayed">0</strong></div>
+                <div class="stat-row"><span>Wins</span><strong id="statWins">0</strong></div>
+                <div class="stat-row"><span>Losses</span><strong id="statLosses">0</strong></div>
+                <div class="stat-row"><span>Draws</span><strong id="statDraws">0</strong></div>
+                <div class="stat-row"><span>Win Rate</span><strong id="statWinRate">0%</strong></div>
+                <div class="stat-row"><span>Best Streak</span><strong id="statBestStreak">0</strong></div>
+                <div class="stat-row"><span>Total XP</span><strong id="statTotalXP">0</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="daily" class="page-section">
+          <div class="content-panel panel">
+            <div class="section-heading section-header-row">
+              <h2>🎯 Daily Challenge</h2>
+              <button class="secondary-btn" type="button" data-back="hub">🏠 Back to Hub</button>
+            </div>
+            <div id="dailyChallengeDetail" class="challenge-detail"></div>
+          </div>
+        </section>
+
+        <section id="achievements" class="page-section">
+          <div class="content-panel panel">
+            <div class="section-heading section-header-row">
+              <h2>🏅 Achievements</h2>
+              <button class="secondary-btn" type="button" data-back="hub">🏠 Back to Hub</button>
+            </div>
+            <div id="achievementsList" class="achievements-grid"></div>
+          </div>
+        </section>
+
+        <section id="stats" class="page-section">
+          <div class="content-panel panel">
+            <div class="section-heading section-header-row">
+              <h2>📊 Statistics</h2>
+              <button class="secondary-btn" type="button" data-back="hub">🏠 Back to Hub</button>
+            </div>
+            <div id="statsDetail" class="stats-detail"></div>
+          </div>
+        </section>
+
+        <section id="leaderboard" class="page-section">
+          <div class="content-panel panel">
+            <div class="section-heading section-header-row">
+              <h2>🏆 Leaderboard</h2>
+              <button class="secondary-btn" type="button" data-back="hub">🏠 Back to Hub</button>
+            </div>
+            <div id="leaderboardLarge" class="leaderboard-large"></div>
+          </div>
+        </section>
+
+        <section id="shop" class="page-section">
+          <div class="content-panel panel">
+            <div class="section-heading section-header-row">
+              <div>
+                <p class="eyebrow">Spend your arcade coins</p>
+                <h2>🛍️ Reward Shop</h2>
+              </div>
+              <button class="secondary-btn" type="button" data-back="hub">🏠 Back to Hub</button>
+            </div>
+            <div class="shop-grid">
+              <button class="shop-item" type="button" data-shop-item="cyber" data-cost="100"><span class="shop-art cyber-art">🌌</span><strong>Cyber Theme</strong><small>100 🪙</small></button>
+              <button class="shop-item" type="button" data-shop-item="inferno" data-cost="200"><span class="shop-art inferno-art">🔥</span><strong>Inferno Theme</strong><small>200 🪙</small></button>
+              <button class="shop-item" type="button" data-shop-item="rainbow" data-cost="300"><span class="shop-art rainbow-art">🌈</span><strong>Rainbow Theme</strong><small>300 🪙</small></button>
+            </div>
+            <p id="shopStatus" class="shop-status">Cosmetics are saved to your player profile.</p>
+          </div>
+        </section>
+
+        <section id="profile" class="page-section">
+          <div class="content-panel panel">
+            <div class="section-heading section-header-row">
+              <h2>👤 Player Profile</h2>
+              <button class="secondary-btn" type="button" data-back="hub">🏠 Back to Hub</button>
+            </div>
+
+            <div class="profile-editor">
+              <div class="profile-field">
+                <label for="profileUsername">Username</label>
+                <input id="profileUsername" type="text" maxlength="20" value="Nandhu" />
+              </div>
+
+              <div class="profile-field">
+                <label>Avatar</label>
+                <div id="avatarPicker" class="avatar-picker">
+                  <button class="avatar-option active" data-avatar="🧑‍🚀" type="button">🧑‍🚀</button>
+                  <button class="avatar-option" data-avatar="🦸" type="button">🦸</button>
+                  <button class="avatar-option" data-avatar="👾" type="button">👾</button>
+                  <button class="avatar-option" data-avatar="🧙" type="button">🧙</button>
+                  <button class="avatar-option" data-avatar="🤖" type="button">🤖</button>
+                </div>
+              </div>
+
+              <div class="profile-field">
+                <label for="favoriteGameSelect">Favorite Game</label>
+                <select id="favoriteGameSelect">
+                  <option value="rps">Rock Paper Scissors</option>
+                  <option value="guess">Number Guessing</option>
+                  <option value="ttt">Tic-Tac-Toe</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="rpsView" class="page-section game-page">
+          <div class="game-topbar">
+            <button class="back-btn" type="button" data-back="hub">← Back to Hub</button>
+            <button class="restart-btn" id="rpsRestart" type="button">🔄 Restart Game</button>
+          </div>
+
+          <div class="game-panel panel">
+            <div class="game-header-row">
+              <div>
+                <p class="eyebrow">Arcade Match</p>
+                <h2>✊ Rock Paper Scissors</h2>
+              </div>
+              <button class="secondary-btn clear-btn" type="button" data-clear="rps">Clear Result</button>
+            </div>
+
+            <div class="choices-grid rps-choices">
+              <button class="choice-btn" data-rps-choice="rock" type="button">✊ Rock</button>
+              <button class="choice-btn" data-rps-choice="paper" type="button">✋ Paper</button>
+              <button class="choice-btn" data-rps-choice="scissors" type="button">✌️ Scissors</button>
+            </div>
+
+            <div class="result-box">
+              <p><strong>Your Pick:</strong> <span id="rpsPlayerChoice">-</span></p>
+              <p><strong>Computer Pick:</strong> <span id="rpsComputerChoice">-</span></p>
+              <p class="result-text"><strong>Result:</strong> <span id="rpsResult">Choose your move!</span></p>
+            </div>
+
+            <div class="round-footer">
+              <span>Score: <strong id="rpsScore">0</strong></span>
+            </div>
+          </div>
+        </section>
+
+        <section id="guessView" class="page-section game-page">
+          <div class="game-topbar">
+            <button class="back-btn" type="button" data-back="hub">← Back to Hub</button>
+            <button class="restart-btn" id="guessRestart" type="button">🔄 Restart Game</button>
+          </div>
+
+          <div class="game-panel panel">
+            <div class="game-header-row">
+              <div>
+                <p class="eyebrow"> Mind Challenge</p>
+                <h2>🔢 Number Guessing</h2>
+              </div>
+              <button class="secondary-btn clear-btn" type="button" data-clear="guess">Clear Result</button>
+            </div>
+
+            <div class="controls-row">
+              <label for="guessDifficulty">Difficulty</label>
+              <select id="guessDifficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+
+            <form id="guessForm" class="guess-form">
+              <label for="guessInput">Enter a number from 1 to <span id="guessRangeValue">100</span></label>
+              <div class="guess-input-row">
+                <input id="guessInput" type="number" min="1" max="100" placeholder="Type your guess" />
+                <button type="submit">Check</button>
+              </div>
+            </form>
+
+            <div class="result-box">
+              <p><strong>Attempts:</strong> <span id="guessAttempts">0</span></p>
+              <p><strong>Hint:</strong> <span id="guessHint">Start guessing!</span></p>
+              <p class="result-text"><strong>Result:</strong> <span id="guessResult">Hidden number is ready.</span></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="tttView" class="page-section game-page">
+          <div class="game-topbar">
+            <button class="back-btn" type="button" data-back="hub">← Back to Hub</button>
+            <button class="restart-btn" id="tttRestart" type="button">🔄 Restart Game</button>
+          </div>
+
+          <div class="game-panel panel">
+            <div class="game-header-row">
+              <div>
+                <p class="eyebrow">Strategy Battle</p>
+                <h2>❌⭕ Tic-Tac-Toe</h2>
+              </div>
+              <button class="secondary-btn clear-btn" type="button" data-clear="ttt">Clear Result</button>
+            </div>
+
+            <div class="controls-row">
+              <label for="tttDifficulty">Difficulty</label>
+              <select id="tttDifficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+
+            <div class="board-wrap">
+              <div id="ticTacToeBoard" class="tic-tac-toe-board" aria-label="Tic-tac-toe game board">
+                <button class="cell" type="button" data-index="0" aria-label="cell 1"></button>
+                <button class="cell" type="button" data-index="1" aria-label="cell 2"></button>
+                <button class="cell" type="button" data-index="2" aria-label="cell 3"></button>
+                <button class="cell" type="button" data-index="3" aria-label="cell 4"></button>
+                <button class="cell" type="button" data-index="4" aria-label="cell 5"></button>
+                <button class="cell" type="button" data-index="5" aria-label="cell 6"></button>
+                <button class="cell" type="button" data-index="6" aria-label="cell 7"></button>
+                <button class="cell" type="button" data-index="7" aria-label="cell 8"></button>
+                <button class="cell" type="button" data-index="8" aria-label="cell 9"></button>
+              </div>
+            </div>
+
+            <div class="result-box">
+              <p><strong>Status:</strong> <span id="tttStatus">Your turn! Place an X.</span></p>
+              <p class="result-text"><strong>Result:</strong> <span id="tttResult">Awaiting first move.</span></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
