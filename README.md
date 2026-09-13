@@ -130,7 +130,3 @@ Challenge the computer in a classic Tic-Tac-Toe match with multiple difficulty l
 ## 👩‍💻 Author
 
 **Nandhini**
-
----
-
-⭐ If you like this project, consider giving the repository a **Star**!
